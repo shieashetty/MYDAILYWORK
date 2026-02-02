@@ -1,48 +1,139 @@
-# Rule-Based Mental Wellness Support Chatbot
-
 def chatbot_response(user_input):
-    user_input = user_input.lower()
+    user_input = user_input.lower().strip()
 
-    if user_input in ["hi", "hello", "hey"]:
-        return "Hello 🤍 I’m here to listen. How are you feeling today?"
+    # ---------- NEGATIVE PHRASES ----------
+    negative_phrases = [
+        "not good", "dont feel good", "do not feel good",
+        "not okay", "dont feel okay", "do not feel okay",
+        "not fine", "dont feel fine", "do not feel fine",
+        "not feeling well", "dont feel well", "do not feel well"
+    ]
 
-    elif "sad" in user_input or "down" in user_input:
-        return "I'm sorry you're feeling this way. You're not alone. Would you like a small breathing or grounding exercise?"
-
-    elif "stressed" in user_input or "anxious" in user_input:
-        return "That sounds overwhelming. Try taking a slow breath in for 4 seconds, hold for 4, and breathe out for 6."
-
-    elif "tired" in user_input or "exhausted" in user_input:
-        return "It’s okay to feel tired. Make sure you’re resting and being kind to yourself today."
-
-    elif "happy" in user_input or "good" in user_input:
-        return "I’m really glad to hear that 😊 Keep doing what’s working for you."
-
-    elif "help" in user_input:
+    if any(phrase in user_input for phrase in negative_phrases):
         return (
-            "I can offer emotional support, calming suggestions, or simple self-care tips. "
-            "If you're feeling overwhelmed, talking to someone you trust can really help."
+            "I’m really sorry you’re feeling this way.\n"
+            "You don’t have to go through it alone.\n"
+            "Would you like to talk, try breathing, or get some tips?"
         )
 
-    elif "bye" in user_input or "exit" in user_input:
-        return "Take care 🤍 Remember to be gentle with yourself."
+    # ---------- FOLLOW-UP POSITIVE ----------
+    elif any(phrase in user_input for phrase in [
+        "everything", "all good", "all great",
+        "love my life", "life is good", "life is great",
+        "going well", "going great"
+    ]):
+        return (
+            "That’s really wonderful to hear.\n"
+            "It sounds like things are going well for you.\n"
+            "What do you think has helped you feel this way?"
+        )
 
+    # ---------- GREETINGS ----------
+    elif any(word in user_input for word in ["hi", "hello", "hey"]):
+        return (
+            "Hello, I’m here to listen.\n"
+            "How are you feeling right now?"
+        )
+
+    # ---------- EMOTIONAL STATES ----------
+    elif any(word in user_input for word in ["sad", "down", "upset", "low"]):
+        return (
+            "I’m really sorry you’re feeling this way.\n"
+            "You don’t have to carry it alone.\n"
+            "If you want, you can say: breathe, talk, or tips."
+        )
+
+    elif any(word in user_input for word in ["stressed", "anxious", "anxiety", "worried"]):
+        return (
+            "That sounds overwhelming.\n"
+            "Let’s slow things down for a moment.\n"
+            "You can try breathing or tell me what’s causing the stress."
+        )
+
+    elif any(word in user_input for word in ["tired", "exhausted", "burnt out"]):
+        return (
+            "Feeling tired can be really heavy.\n"
+            "It’s okay to pause.\n"
+            "Resting is not being lazy."
+        )
+
+    elif "lonely" in user_input:
+        return (
+            "Feeling lonely can hurt a lot.\n"
+            "Even though I’m just a program, I’m here with you.\n"
+            "Do you want to talk about what’s making you feel this way?"
+        )
+
+    elif any(word in user_input for word in ["overwhelmed", "confused"]):
+        return (
+            "That’s a lot to handle at once.\n"
+            "Sometimes breaking things into small steps helps.\n"
+            "What feels the hardest right now?"
+        )
+
+    elif any(word in user_input for word in ["angry", "frustrated", "mad"]):
+        return (
+            "Those feelings are completely valid.\n"
+            "Anger often means something important matters to you.\n"
+            "Do you want to vent or try something calming?"
+        )
+
+    # ---------- POSITIVE STATE ----------
+    elif any(word in user_input for word in ["happy", "good", "fine", "okay"]):
+        return (
+            "I’m really glad to hear that 😊\n"
+            "What’s been going well for you?"
+        )
+
+    # ---------- ACTION COMMANDS ----------
+    elif "breathe" in user_input:
+        return (
+            "Okay, let’s breathe together.\n"
+            "Inhale for 4 seconds…\n"
+            "Hold for 4 seconds…\n"
+            "Exhale slowly for 6 seconds.\n"
+            "Repeat this a few times."
+        )
+
+    elif "talk" in user_input:
+        return (
+            "I’m here to listen.\n"
+            "You can share whatever is on your mind."
+        )
+
+    elif "tips" in user_input:
+        return (
+            "Here are a few gentle self-care ideas:\n"
+            "- drink some water\n"
+            "- stretch your body\n"
+            "- write one thought down\n"
+            "- take a short break from screens"
+        )
+
+    elif any(word in user_input for word in ["help", "menu", "options"]):
+        return (
+            "You can talk to me about feeling:\n"
+            "sad, stressed, tired, lonely, overwhelmed, angry, or happy.\n"
+            "You can also say: breathe, talk, tips, or bye."
+        )
+
+    # ---------- THANK YOU / CLOSING ----------
+    elif any(phrase in user_input for phrase in ["thank", "thanks", "that helped", "helped"]):
+        return (
+            "I’m really glad I could help 🤍\n"
+            "If you ever want to talk, I’ll be right here.\n"
+            "You can type 'bye' whenever you want to exit."
+        )
+
+    elif any(word in user_input for word in ["bye", "exit", "quit"]):
+        return (
+            "Take care 🤍\n"
+            "Be gentle with yourself today."
+        )
+
+    # ---------- FALLBACK ----------
     else:
         return (
-            "I may not fully understand, but I’m here with you. "
-            "Would you like to talk a bit more about how you're feeling?"
+            "I’m listening.\n"
+            "You can tell me more, or type 'options' to see what I understand."
         )
-
-
-# Main program loop
-print("🌱 Mental Wellness Support Bot")
-print("Note: This chatbot provides general emotional support and is not a medical professional.")
-print("Type 'bye' to exit.\n")
-
-while True:
-    user = input("You: ")
-    response = chatbot_response(user)
-    print("Bot:", response)
-
-    if user.lower() in ["bye", "exit"]:
-        break
