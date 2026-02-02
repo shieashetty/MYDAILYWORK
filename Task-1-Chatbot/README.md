@@ -1,24 +1,25 @@
-# Task 1: Rule-Based Mental Wellness Support Chatbot
+# Mental Health Wellness Chatbot
 
-## Objective
-To build a simple rule-based chatbot that provides general emotional support using predefined rules.
+This project is part of **Task 1** of the **CodSoft Artificial Intelligence Internship**.
 
-## Description
-This project is a Python-based mental wellness support chatbot that responds to user emotions such as stress, sadness, tiredness, or happiness using if-else logic and keyword matching.
+## 📌 Project Description
+A rule-based Mental Health Wellness Chatbot built using **Python and Flask**.  
+The chatbot responds to user inputs using predefined rules and pattern matching to provide emotional support, breathing exercises, and self-care tips.
 
-⚠️ This chatbot does not provide medical advice or diagnosis. It is designed only for general emotional support.
+## 🛠 Technologies Used
+- Python  
+- Flask  
+- HTML  
+- CSS  
+- JavaScript  
 
-## Technologies Used
-- Python
+## ⚙ Features
+- Rule-based conversational responses  
+- Handles basic emotional states (sad, stressed, tired, happy, etc.)  
+- Provides breathing exercises and self-care tips  
+- Simple and clean web-based UI  
 
-## Features
-- Friendly greeting and conversation flow
-- Supportive responses for stress, anxiety, sadness, and fatigue
-- Encouraging and empathetic tone
-- Exit handling
-
-## Learning Outcome
-This task helped me understand:
-- Rule-based conversation design
-- Basic natural language processing concepts
-- Ethical considerations in AI-based support systems
+## ▶ How to Run the Project
+1. Clone the repository  
+   ```bash
+   git clone https://github.com/your-username/CODSOFT.git
