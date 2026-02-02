@@ -22,4 +22,4 @@ The chatbot responds to user inputs using predefined rules and pattern matching 
 ## ▶ How to Run the Project
 1. Clone the repository  
    ```bash
-   git clone https://github.com/your-username/CODSOFT.git
+   git clone https://github.com/shieashetty/CODSOFT.git
